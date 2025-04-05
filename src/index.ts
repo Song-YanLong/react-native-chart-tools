@@ -1,1 +1,3 @@
-export * from './Echarts'
+import Echarts from './Echarts';
+
+export { Echarts };
