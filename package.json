@@ -1,6 +1,6 @@
 {
   "name": "react-native-chart-tools",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "在react-native中使用图表工具",
   "source": "./src/index.tsx",
   "main": "./lib/module/index.js",
@@ -82,7 +82,8 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-webview": "^13.13.5"
   },
   "workspaces": [
     "example"
@@ -148,8 +149,5 @@
     "languages": "js",
     "type": "library",
     "version": "0.49.2"
-  },
-  "dependencies": {
-    "react-native-webview": "^13.13.5"
   }
 }
