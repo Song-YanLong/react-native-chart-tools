@@ -16,7 +16,7 @@ import { multiply } from 'react-native-chart-tools';
 
 // ...
 
-const result = multiply(3, 7);
+const result = await multiply(3, 7);
 ```
 
 
