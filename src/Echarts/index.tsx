@@ -1,7 +1,16 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
-const Echarts = (props: any) => {
+interface EchartsProps {
+  option: Record<string, any>; // Echarts 配置项
+  width?: number | string; // Echarts 宽度
+  height: number | string; // Echarts 高度
+  style?: object; // webview 样式
+  onLoad?: (status: string) => void; // 加载完成回调
+  onError?: (status: string) => void; // 加载错误回调
+}
+
+const Echarts = (props: EchartsProps) => {
   const webViewRef = useRef<WebView>(null);
   const isLoading = useRef<boolean>(false); // 判断脚本是否加载完成
   const option = useRef<Record<string, any>>({}); // 保存上一次的配置项
@@ -47,11 +56,12 @@ const Echarts = (props: any) => {
       if (data.code === 1) {
         isLoading.current = true;
         loadEcharts();
+        props?.onLoad?.('脚本加载完成');
       } else if (data.code === 0) {
-        console.error('脚本加载失败');
+        props?.onError?.('脚本加载失败');
       }
     } catch (error) {
-      console.error('消息解析失败:', error);
+      props?.onError?.('消息解析失败');
     }
   };
 
@@ -62,7 +72,7 @@ const Echarts = (props: any) => {
       originWhitelist={['*']}
       source={require('./template.html')} // 调整路径到你的 HTML 文件
       // eslint-disable-next-line react-native/no-inline-styles
-      style={{ flex: 1 }}
+      style={{ flex: 1, ...(props?.style || {}) }}
       onMessage={handleOnMessage}
       onError={() => {
         console.error('WebView加载错误');

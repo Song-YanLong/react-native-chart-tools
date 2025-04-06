@@ -1,6 +1,6 @@
 {
   "name": "react-native-chart-tools",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "在react-native中使用图表工具",
   "source": "./src/index.tsx",
   "main": "./lib/module/index.js",
@@ -148,5 +148,8 @@
     "languages": "js",
     "type": "library",
     "version": "0.49.2"
+  },
+  "dependencies": {
+    "react-native-webview": "^13.13.5"
   }
 }
