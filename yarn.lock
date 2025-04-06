@@ -11909,6 +11909,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+    react-native-webview: ^13.13.5
   languageName: unknown
   linkType: soft
 
